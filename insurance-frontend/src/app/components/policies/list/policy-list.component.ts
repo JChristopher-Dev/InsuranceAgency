@@ -70,12 +70,14 @@ import { PolicyType, PolicySummary } from '@models/policy.model';
                     <td>
                       <div class="td-actions">
                         <a [routerLink]="['/policies', p.policyID]" class="btn btn-secondary btn-sm">View</a>
+                        <a [routerLink]="['/policies', p.policyID, 'edit']" class="btn btn-ghost btn-sm">Edit</a>
                         @if (p.status === 'Active') {
                           <button (click)="cancel(p)" class="btn btn-ghost btn-sm" style="color:var(--red)">Cancel</button>
                         }
                         @if (p.status === 'Suspended') {
                           <button (click)="reactivate(p.policyID)" class="btn btn-ghost btn-sm" style="color:var(--green)">Reactivate</button>
                         }
+                        <button (click)="deletePolicy(p)" class="btn btn-ghost btn-sm" style="color:var(--red)">Delete</button>
                       </div>
                     </td>
                   </tr>
@@ -133,5 +135,10 @@ export class PolicyListComponent implements OnInit {
 
   reactivate(id: number): void {
     this.policySvc.updateStatus(id, 'Active').subscribe();
+  }
+
+  deletePolicy(p: PolicySummary): void {
+    if (!confirm(`Delete policy ${p.policyNumber}? This cannot be undone.`)) return;
+    this.policySvc.delete(p.policyID).subscribe();
   }
 }

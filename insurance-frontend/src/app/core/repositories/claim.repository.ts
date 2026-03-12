@@ -6,7 +6,7 @@ import { Observable }  from 'rxjs';
 import { ApiResponse, PagedResponse } from '../../core/models/api-response.model';
 import {
   Claim, ClaimStatus,
-  CreateClaimRequest, UpdateClaimStatusRequest
+  CreateClaimRequest, UpdateClaimRequest, UpdateClaimStatusRequest
 } from '../../core/models/claim.model';
 
 @Injectable({ providedIn: 'root' })
@@ -42,6 +42,10 @@ export class ClaimRepository {
 
   create(body: CreateClaimRequest): Observable<ApiResponse<Claim>> {
     return this.http.post<ApiResponse<Claim>>(this.base, body);
+  }
+
+  update(id: number, body: UpdateClaimRequest): Observable<ApiResponse<Claim>> {
+    return this.http.put<ApiResponse<Claim>>(`${this.base}/${id}`, body);
   }
 
   updateStatus(id: number, body: UpdateClaimStatusRequest): Observable<ApiResponse<Claim>> {

@@ -71,6 +71,13 @@ export const routes: Routes = [
         .then(m => m.PolicyDetailComponent),
     title: 'Policy Detail'
   },
+  {
+    path: 'policies/:id/edit',
+    loadComponent: () =>
+      import('./components/policies/form/policy-form.component')
+        .then(m => m.PolicyFormComponent),
+    title: 'Edit Policy'
+  },
 
   // Claims
   {
@@ -86,6 +93,20 @@ export const routes: Routes = [
       import('./components/claims/form/claim-form.component')
         .then(m => m.ClaimFormComponent),
     title: 'New Claim'
+  },
+  {
+    path: 'claims/:id',
+    loadComponent: () =>
+      import('./components/claims/detail/claim-detail.component')
+        .then(m => m.ClaimDetailComponent),
+    title: 'Claim Detail'
+  },
+  {
+    path: 'claims/:id/edit',
+    loadComponent: () =>
+      import('./components/claims/form/claim-form.component')
+        .then(m => m.ClaimFormComponent),
+    title: 'Edit Claim'
   },
 
   // Fallback

@@ -63,5 +63,18 @@ export interface CreatePolicyRequest {
   legalType?:         string;
 }
 
+export interface UpdatePolicyRequest {
+  policyNumber:      string;
+  startDate:         string;
+  endDate:           string;
+  premiumAmount:     number;
+  policyType:        PolicyType;
+  coverageAmount?:    number;
+  beneficiary?:       string;
+  funeralType?:       string;
+  maxCoverageAmount?: number;
+  legalType?:         string;
+}
+
 export interface UpdatePolicyStatusRequest { status: PolicyStatus; }
 export interface UpdatePremiumRequest      { premiumAmount: number; }

@@ -42,3 +42,17 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Visual Studio / Copilot Indexing
+.vs/
+*.db-shm
+*.db-wal
+
+# Build outputs
+bin/
+obj/
+out/
+dist/
+
+# Node dependencies
+node_modules/

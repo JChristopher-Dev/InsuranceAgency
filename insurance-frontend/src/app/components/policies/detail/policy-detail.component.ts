@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DecimalPipe }    from '@angular/common';
 import { PolicyService }  from '@services/policy.service';
 import { ClaimService }   from '@services/claim.service';
@@ -25,7 +25,9 @@ import { Policy }         from '@models/policy.model';
             <p class="page-subtitle">Policyholder: <strong>{{ policy.clientName }}</strong> · Policy #{{ policy.policyID }}</p>
           </div>
           <div class="page-actions">
+            <a [routerLink]="['/policies', policy.policyID, 'edit']" class="btn btn-secondary">Edit Policy</a>
             <a [routerLink]="['/clients', policy.clientID]" class="btn btn-ghost">View Client</a>
+            <button (click)="deletePolicy()" class="btn btn-danger">Delete</button>
             <a routerLink="/policies" class="btn btn-secondary">← Back</a>
           </div>
         </div>
@@ -91,7 +93,7 @@ import { Policy }         from '@models/policy.model';
           </div>
           <div class="table-wrapper">
             <table>
-              <thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Description</th></tr></thead>
+              <thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Description</th><th></th></tr></thead>
               <tbody>
                 @for (c of claimSvc.claims(); track c.claimID) {
                   <tr>
@@ -99,9 +101,10 @@ import { Policy }         from '@models/policy.model';
                     <td style="font-weight:600">R {{ c.amount | number:'1.2-2' }}</td>
                     <td><span [class]="'badge badge-' + c.status.toLowerCase()"><span class="badge-dot"></span>{{ c.status }}</span></td>
                     <td style="color:var(--gray-500);max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.description }}</td>
+                    <td><a [routerLink]="['/claims', c.claimID]" class="btn btn-secondary btn-sm">View</a></td>
                   </tr>
                 } @empty {
-                  <tr><td colspan="4">
+                  <tr><td colspan="5">
                     <div class="empty-state" style="padding:28px">
                       <div class="empty-state-icon" style="font-size:30px">📁</div>
                       <h3>No claims on this policy</h3>
@@ -121,6 +124,7 @@ export class PolicyDetailComponent implements OnInit {
 
   constructor(
     private route:     ActivatedRoute,
+    private router:    Router,
     private policySvc: PolicyService,
     public  claimSvc:  ClaimService
   ) {}
@@ -135,6 +139,15 @@ export class PolicyDetailComponent implements OnInit {
     if (!this.policy) return;
     this.policySvc.updateStatus(this.policy.policyID, status).subscribe(p => {
       this.policy = p;
+    });
+  }
+
+  deletePolicy(): void {
+    if (!this.policy) return;
+    if (!confirm(`Delete policy ${this.policy.policyNumber}? This cannot be undone.`)) return;
+
+    this.policySvc.delete(this.policy.policyID).subscribe(() => {
+      this.router.navigate(['/policies']);
     });
   }
 }

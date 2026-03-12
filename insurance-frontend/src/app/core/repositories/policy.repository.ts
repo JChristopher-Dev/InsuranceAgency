@@ -6,7 +6,7 @@ import { Observable }  from 'rxjs';
 import { ApiResponse, PagedResponse } from '@models/api-response.model';
 import {
   Policy, PolicySummary, PolicyType, PolicyStatus,
-  CreatePolicyRequest, UpdatePolicyStatusRequest, UpdatePremiumRequest
+  CreatePolicyRequest, UpdatePolicyRequest, UpdatePolicyStatusRequest, UpdatePremiumRequest
 } from '@models/policy.model';
 
 @Injectable({ providedIn: 'root' })
@@ -44,6 +44,10 @@ export class PolicyRepository {
 
   create(body: CreatePolicyRequest): Observable<ApiResponse<Policy>> {
     return this.http.post<ApiResponse<Policy>>(this.base, body);
+  }
+
+  update(id: number, body: UpdatePolicyRequest): Observable<ApiResponse<Policy>> {
+    return this.http.put<ApiResponse<Policy>>(`${this.base}/${id}`, body);
   }
 
   updateStatus(id: number, body: UpdatePolicyStatusRequest): Observable<ApiResponse<Policy>> {

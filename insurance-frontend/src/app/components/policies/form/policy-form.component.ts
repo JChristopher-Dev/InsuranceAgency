@@ -2,7 +2,7 @@ import { Component, OnInit }      from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { PolicyService } from '@services/policy.service';
-import { PolicyType }    from '@models/policy.model';
+import { PolicyType, CreatePolicyRequest, UpdatePolicyRequest, Policy } from '@models/policy.model';
 
 @Component({
   selector: 'app-policy-form',
@@ -12,8 +12,8 @@ import { PolicyType }    from '@models/policy.model';
     <div class="page-container" style="max-width:740px">
       <div class="page-header">
         <div>
-          <h1 class="page-title">New Policy</h1>
-          <p class="page-subtitle">Create a Life, Funeral, or Legal policy</p>
+          <h1 class="page-title">{{ isEdit ? 'Edit Policy' : 'New Policy' }}</h1>
+          <p class="page-subtitle">{{ isEdit ? 'Update policy details and coverage' : 'Create a Life, Funeral, or Legal policy' }}</p>
         </div>
         <a routerLink="/policies" class="btn btn-secondary">← Back</a>
       </div>
@@ -24,10 +24,12 @@ import { PolicyType }    from '@models/policy.model';
           <div class="form-section">
             <div class="form-section-title">Policy Information</div>
             <div class="form-row">
-              <div class="form-group">
-                <label>Client ID <span style="color:var(--red)">*</span></label>
-                <input formControlName="clientID" type="number" placeholder="Enter client ID" />
-              </div>
+              @if (!isEdit) {
+                <div class="form-group">
+                  <label>Client ID <span style="color:var(--red)">*</span></label>
+                  <input formControlName="clientID" type="number" placeholder="Enter client ID" />
+                </div>
+              }
               <div class="form-group">
                 <label>Policy Number <span style="color:var(--red)">*</span></label>
                 <input formControlName="policyNumber" type="text" placeholder="e.g. POL-2024-001" />
@@ -112,7 +114,7 @@ import { PolicyType }    from '@models/policy.model';
 
           <div style="display:flex;gap:12px;padding-top:24px;border-top:1px solid var(--gray-100);margin-top:8px">
             <button type="submit" class="btn btn-primary btn-lg" [disabled]="saving">
-              {{ saving ? 'Creating...' : 'Create Policy' }}
+              {{ saving ? (isEdit ? 'Saving...' : 'Creating...') : (isEdit ? 'Save Changes' : 'Create Policy') }}
             </button>
             <a routerLink="/policies" class="btn btn-secondary btn-lg">Cancel</a>
           </div>
@@ -123,10 +125,11 @@ import { PolicyType }    from '@models/policy.model';
   `
 })
 export class PolicyFormComponent implements OnInit {
+  isEdit = false;
   saving = false;
   selectedType: PolicyType | '' = '';
-  // form declared here but initialized in constructor to avoid "used before initialization" error
   form!: FormGroup;
+  private policyId?: number;
 
   constructor(
     private fb:        FormBuilder,
@@ -150,20 +153,136 @@ export class PolicyFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.policyId = Number(this.route.snapshot.paramMap.get('id'));
+    this.isEdit = !!this.policyId && !isNaN(this.policyId);
+
     const clientId = this.route.snapshot.queryParamMap.get('clientId');
     if (clientId) this.form.patchValue({ clientID: Number(clientId) });
+
+    if (this.isEdit) {
+      this.policySvc.getById(this.policyId!).subscribe(policy => {
+        if (!policy) return;
+
+        this.prefillForm(policy);
+      });
+    }
+
+    this.onTypeChange();
   }
 
   onTypeChange(): void {
     this.selectedType = this.form.value.policyType as PolicyType | '';
+    this.applyTypeValidators();
   }
 
   submit(): void {
     if (this.form.invalid) { this.form.markAllAsTouched(); return; }
+
     this.saving = true;
-    this.policySvc.create(this.form.value as any).subscribe({
+
+    const payload = this.buildPayload();
+    const action = this.isEdit
+      ? this.policySvc.update(this.policyId!, payload as UpdatePolicyRequest)
+      : this.policySvc.create(payload as CreatePolicyRequest);
+
+    action.subscribe({
       next: () => this.router.navigate(['/policies']),
       error: (e: Error) => { console.error(e); this.saving = false; }
     });
+  }
+
+  private prefillForm(policy: Policy): void {
+    this.selectedType = policy.policyType;
+
+    this.form.patchValue({
+      clientID: policy.clientID,
+      policyNumber: policy.policyNumber,
+      policyType: policy.policyType,
+      startDate: this.toDateInput(policy.startDate),
+      endDate: this.toDateInput(policy.endDate),
+      premiumAmount: policy.premiumAmount,
+      coverageAmount: policy.lifeDetail?.coverageAmount ?? policy.funeralDetail?.coverageAmount ?? null,
+      beneficiary: policy.lifeDetail?.beneficiary ?? '',
+      funeralType: policy.funeralDetail?.funeralType ?? '',
+      maxCoverageAmount: policy.legalDetail?.maxCoverageAmount ?? null,
+      legalType: policy.legalDetail?.legalType ?? '',
+    });
+
+    this.applyTypeValidators();
+  }
+
+  private applyTypeValidators(): void {
+    const coverageAmount = this.form.get('coverageAmount');
+    const beneficiary = this.form.get('beneficiary');
+    const funeralType = this.form.get('funeralType');
+    const maxCoverageAmount = this.form.get('maxCoverageAmount');
+    const legalType = this.form.get('legalType');
+
+    coverageAmount?.clearValidators();
+    beneficiary?.clearValidators();
+    funeralType?.clearValidators();
+    maxCoverageAmount?.clearValidators();
+    legalType?.clearValidators();
+
+    if (this.selectedType === 'Life') {
+      coverageAmount?.setValidators([Validators.required, Validators.min(1)]);
+      beneficiary?.setValidators([Validators.required]);
+    }
+
+    if (this.selectedType === 'Funeral') {
+      coverageAmount?.setValidators([Validators.required, Validators.min(1)]);
+      funeralType?.setValidators([Validators.required]);
+    }
+
+    if (this.selectedType === 'Legal') {
+      maxCoverageAmount?.setValidators([Validators.required, Validators.min(1)]);
+      legalType?.setValidators([Validators.required]);
+    }
+
+    coverageAmount?.updateValueAndValidity();
+    beneficiary?.updateValueAndValidity();
+    funeralType?.updateValueAndValidity();
+    maxCoverageAmount?.updateValueAndValidity();
+    legalType?.updateValueAndValidity();
+  }
+
+  private buildPayload(): CreatePolicyRequest | UpdatePolicyRequest {
+    const value = this.form.getRawValue();
+    const base = {
+      policyNumber: value.policyNumber,
+      startDate: value.startDate,
+      endDate: value.endDate,
+      premiumAmount: Number(value.premiumAmount),
+      policyType: value.policyType as PolicyType,
+    };
+
+    if (this.selectedType === 'Life') {
+      return {
+        ...base,
+        ...(this.isEdit ? {} : { clientID: Number(value.clientID) }),
+        coverageAmount: Number(value.coverageAmount),
+        beneficiary: value.beneficiary,
+      };
+    }
+
+    if (this.selectedType === 'Funeral') {
+      return {
+        ...base,
+        ...(this.isEdit ? {} : { clientID: Number(value.clientID) }),
+        coverageAmount: Number(value.coverageAmount),
+        funeralType: value.funeralType,
+      };
+    }
+
+    return {
+      ...base,
+      ...(this.isEdit ? {} : { clientID: Number(value.clientID) }),
+      maxCoverageAmount: Number(value.maxCoverageAmount),
+      legalType: value.legalType,
+    };
+  }
+
+  private toDateInput(dateValue: string): string {
+    return dateValue?.slice(0, 10) ?? '';
   }
 }

@@ -4,7 +4,7 @@ import { Injectable, signal } from '@angular/core';
 import { Observable, tap, map } from 'rxjs';
 import { ClaimRepository } from '@repos/claim.repository';
 import {
-  Claim, ClaimStatus, CreateClaimRequest
+  Claim, ClaimStatus, CreateClaimRequest, UpdateClaimRequest
 } from '@models/claim.model';
 
 @Injectable({ providedIn: 'root' })
@@ -51,25 +51,30 @@ export class ClaimService {
     );
   }
 
-  approve(id: number): Observable<Claim | null> {
-    return this.repo.updateStatus(id, { status: 'Approved' }).pipe(
+  update(id: number, req: UpdateClaimRequest): Observable<Claim | null> {
+    return this.repo.update(id, req).pipe(
       tap(() => this.loadAll()),
       map(r => r.data)
     );
+  }
+
+  setStatus(id: number, status: ClaimStatus, rejectionReason?: string): Observable<Claim | null> {
+    return this.repo.updateStatus(id, { status, rejectionReason }).pipe(
+      tap(() => this.loadAll()),
+      map(r => r.data)
+    );
+  }
+
+  approve(id: number): Observable<Claim | null> {
+    return this.setStatus(id, 'Approved');
   }
 
   reject(id: number, reason: string): Observable<Claim | null> {
-    return this.repo.updateStatus(id, { status: 'Rejected', rejectionReason: reason }).pipe(
-      tap(() => this.loadAll()),
-      map(r => r.data)
-    );
+    return this.setStatus(id, 'Rejected', reason);
   }
 
   markPaid(id: number): Observable<Claim | null> {
-    return this.repo.updateStatus(id, { status: 'Paid' }).pipe(
-      tap(() => this.loadAll()),
-      map(r => r.data)
-    );
+    return this.setStatus(id, 'Paid');
   }
 
   delete(id: number): Observable<void> {

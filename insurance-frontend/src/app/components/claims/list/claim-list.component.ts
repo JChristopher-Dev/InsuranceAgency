@@ -73,6 +73,8 @@ import { ClaimStatus }   from '../../../core/models/claim.model';
                     </td>
                     <td>
                       <div class="td-actions">
+                        <a [routerLink]="['/claims', c.claimID]" class="btn btn-secondary btn-sm">View</a>
+                        <a [routerLink]="['/claims', c.claimID, 'edit']" class="btn btn-ghost btn-sm">Edit</a>
                         @if (c.status === 'Pending') {
                           <button (click)="approve(c.claimID)" class="btn btn-success btn-sm">✓ Approve</button>
                           <button (click)="reject(c.claimID)"  class="btn btn-ghost btn-sm" style="color:var(--red)">✕ Reject</button>
@@ -80,9 +82,7 @@ import { ClaimStatus }   from '../../../core/models/claim.model';
                         @if (c.status === 'Approved') {
                           <button (click)="markPaid(c.claimID)" class="btn btn-primary btn-sm">$ Mark Paid</button>
                         }
-                        @if (c.status === 'Rejected' || c.status === 'Paid') {
-                          <span style="font-size:12px;color:var(--gray-300);padding:0 4px">No actions</span>
-                        }
+                        <button (click)="deleteClaim(c.claimID)" class="btn btn-ghost btn-sm" style="color:var(--red)">Delete</button>
                       </div>
                     </td>
                   </tr>
@@ -143,5 +143,10 @@ export class ClaimListComponent implements OnInit {
 
   markPaid(id: number): void {
     this.claimSvc.markPaid(id).subscribe();
+  }
+
+  deleteClaim(id: number): void {
+    if (!confirm('Delete this claim? This cannot be undone.')) return;
+    this.claimSvc.delete(id).subscribe();
   }
 }

@@ -16,8 +16,8 @@ import { ToastService } from '../../../shared/toast/toast.service';
     <div class="page-container" style="max-width:600px">
       <div class="page-header">
         <div>
-          <h1 class="page-title">Submit Claim</h1>
-          <p class="page-subtitle">Claims can only be submitted against active policies</p>
+          <h1 class="page-title">{{ isEdit ? 'Edit Claim' : 'Submit Claim' }}</h1>
+          <p class="page-subtitle">{{ isEdit ? 'Update claim information' : 'Claims can only be submitted against active policies' }}</p>
         </div>
         <a routerLink="/claims" class="btn btn-secondary">← Back</a>
       </div>
@@ -38,7 +38,7 @@ import { ToastService } from '../../../shared/toast/toast.service';
           </div>
           <div style="display:flex;gap:12px;margin-top:24px">
             <button type="submit" class="btn btn-primary" [disabled]="form.invalid || saving">
-              {{ saving ? 'Submitting...' : 'Submit Claim' }}
+              {{ saving ? (isEdit ? 'Saving...' : 'Submitting...') : (isEdit ? 'Save Changes' : 'Submit Claim') }}
             </button>
             <a routerLink="/claims" class="btn btn-secondary">Cancel</a>
           </div>
@@ -48,8 +48,10 @@ import { ToastService } from '../../../shared/toast/toast.service';
   `
 })
 export class ClaimFormComponent implements OnInit {
+  isEdit = false;
   saving = false;
   form: FormGroup;
+  private claimId?: number;
 
   constructor(
     private fb:       FormBuilder,
@@ -67,8 +69,23 @@ export class ClaimFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.claimId = Number(this.route.snapshot.paramMap.get('id'));
+    this.isEdit = !!this.claimId && !isNaN(this.claimId);
+
     const policyId = this.route.snapshot.queryParamMap.get('policyId');
     if (policyId) this.form.patchValue({ policyID: Number(policyId) });
+
+    if (this.isEdit) {
+      this.claimSvc.getById(this.claimId!).subscribe(claim => {
+        if (!claim) return;
+
+        this.form.patchValue({
+          policyID: claim.policyID,
+          amount: claim.amount,
+          description: claim.description,
+        });
+      });
+    }
   }
 
   submit(): void {
@@ -80,10 +97,14 @@ export class ClaimFormComponent implements OnInit {
     }
 
     this.saving = true;
-    this.claimSvc.create(this.form.value).subscribe({
+    const action = this.isEdit
+      ? this.claimSvc.update(this.claimId!, this.form.value)
+      : this.claimSvc.create(this.form.value);
+
+    action.subscribe({
       next: () => {
         // 4. Show success toast before navigating
-        this.toast.success('Claim submitted successfully!');
+        this.toast.success(this.isEdit ? 'Claim updated successfully!' : 'Claim submitted successfully!');
         this.router.navigate(['/claims']);
       },
       error: (err: Error) => { 

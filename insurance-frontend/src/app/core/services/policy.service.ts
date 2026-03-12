@@ -5,7 +5,7 @@ import { Observable, tap, map } from 'rxjs';
 import { PolicyRepository } from '@repos/policy.repository';
 import {
   Policy, PolicySummary, PolicyType, PolicyStatus,
-  CreatePolicyRequest
+  CreatePolicyRequest, UpdatePolicyRequest
 } from '@models/policy.model';
 
 @Injectable({ providedIn: 'root' })
@@ -55,6 +55,13 @@ export class PolicyService {
 
   create(req: CreatePolicyRequest): Observable<Policy | null> {
     return this.repo.create(req).pipe(
+      tap(() => this.loadAll()),
+      map(r => r.data)
+    );
+  }
+
+  update(id: number, req: UpdatePolicyRequest): Observable<Policy | null> {
+    return this.repo.update(id, req).pipe(
       tap(() => this.loadAll()),
       map(r => r.data)
     );

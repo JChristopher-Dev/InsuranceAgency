@@ -19,6 +19,12 @@ export interface CreateClaimRequest {
   description: string;
 }
 
+export interface UpdateClaimRequest {
+  policyID:    number;
+  amount:      number;
+  description: string;
+}
+
 export interface UpdateClaimStatusRequest {
   status:           ClaimStatus;
   rejectionReason?: string;
