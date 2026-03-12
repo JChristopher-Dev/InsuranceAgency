@@ -1,0 +1,11 @@
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\bin\Debug\net8.0\InsuranceAgency.Domain.deps.json
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\bin\Debug\net8.0\InsuranceAgency.Domain.dll
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\bin\Debug\net8.0\InsuranceAgency.Domain.pdb
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\obj\Debug\net8.0\InsuranceAgency.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\obj\Debug\net8.0\InsuranceAgency.Domain.AssemblyInfoInputs.cache
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\obj\Debug\net8.0\InsuranceAgency.Domain.AssemblyInfo.cs
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\obj\Debug\net8.0\InsuranceAgency.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\obj\Debug\net8.0\InsuranceAgency.Domain.dll
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\obj\Debug\net8.0\refint\InsuranceAgency.Domain.dll
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\obj\Debug\net8.0\InsuranceAgency.Domain.pdb
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Domain\obj\Debug\net8.0\ref\InsuranceAgency.Domain.dll

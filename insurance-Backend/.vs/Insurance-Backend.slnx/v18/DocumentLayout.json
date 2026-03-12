@@ -1,0 +1,141 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Joshuac\\Insurance-Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InsuranceAgency.API\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InsuranceAgency.API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InsuranceAgency.API\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InsuranceAgency.API\\InsuranceAgency.API.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InsuranceAgency.API\\InsuranceAgency.API.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:InsuranceAgency.API\\InsuranceAgency.API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 279,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "InsuranceAgency.API\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "InsuranceAgency.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-11T12:39:57.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\Program.cs",
+              "RelativeDocumentMoniker": "InsuranceAgency.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\Program.cs",
+              "RelativeToolTip": "InsuranceAgency.API\\Program.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T12:33:09.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\appsettings.json",
+              "RelativeDocumentMoniker": "InsuranceAgency.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\appsettings.json",
+              "RelativeToolTip": "InsuranceAgency.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-11T12:31:26.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InsuranceAgency.API.http",
+              "DocumentMoniker": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.http",
+              "RelativeDocumentMoniker": "InsuranceAgency.API\\InsuranceAgency.API.http",
+              "ToolTip": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.http",
+              "RelativeToolTip": "InsuranceAgency.API\\InsuranceAgency.API.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-03-11T12:31:34.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InsuranceAgency.API.csproj.user",
+              "DocumentMoniker": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.csproj.user",
+              "RelativeDocumentMoniker": "InsuranceAgency.API\\InsuranceAgency.API.csproj.user",
+              "ToolTip": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.csproj.user",
+              "RelativeToolTip": "InsuranceAgency.API\\InsuranceAgency.API.csproj.user",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
+              "WhenOpened": "2026-03-11T12:40:07.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InsuranceAgency.API.csproj",
+              "DocumentMoniker": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.csproj",
+              "RelativeDocumentMoniker": "InsuranceAgency.API\\InsuranceAgency.API.csproj",
+              "ToolTip": "C:\\Users\\Joshuac\\Insurance-Backend\\InsuranceAgency.API\\InsuranceAgency.API.csproj",
+              "RelativeToolTip": "InsuranceAgency.API\\InsuranceAgency.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-11T12:33:26.432Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 121,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

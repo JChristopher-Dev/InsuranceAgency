@@ -1,0 +1,17 @@
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\bin\Debug\net8.0\InsuranceAgency.Data.deps.json
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\bin\Debug\net8.0\InsuranceAgency.Data.dll
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\bin\Debug\net8.0\InsuranceAgency.Data.pdb
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\bin\Debug\net8.0\InsuranceAgency.Domain.dll
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\bin\Debug\net8.0\InsuranceAgency.Domain.pdb
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\InsuranceAgency.Data.csproj.AssemblyReference.cache
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\InsuranceAgency.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\InsuranceAgency.Data.AssemblyInfoInputs.cache
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\InsuranceAgency.Data.AssemblyInfo.cs
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\InsuranceAgency.Data.csproj.CoreCompileInputs.cache
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\Insuranc.F5E2B329.Up2Date
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\InsuranceAgency.Data.dll
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\refint\InsuranceAgency.Data.dll
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\InsuranceAgency.Data.pdb
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\ref\InsuranceAgency.Data.dll
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\bin\Debug\net8.0\InsuranceAgency.Data.runtimeconfig.json
+C:\Users\Joshuac\Insurance-Backend\InsuranceAgency.Data\obj\Debug\net8.0\InsuranceAgency.Data.genruntimeconfig.cache
