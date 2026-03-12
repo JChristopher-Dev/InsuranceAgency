@@ -1,0 +1,18 @@
+# Visual Studio & IDE
+.vs/
+*.vsidx
+CopilotIndices/
+copilot-chat/
+
+# .NET Build Output
+[Bb]in/
+[Oo]bj/
+*.dll
+*.pdb
+*.exe
+*.cache
+*.json
+
+# Frontend Dependencies
+node_modules/
+dist/
