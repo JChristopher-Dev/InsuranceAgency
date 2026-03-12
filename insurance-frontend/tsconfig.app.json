@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "baseUrl": "./",
+    "paths": {
+      "@core/*":     ["src/app/core/*"],
+      "@models/*":   ["src/app/core/models/*"],
+      "@services/*": ["src/app/core/services/*"],
+      "@repos/*":    ["src/app/core/repositories/*"],
+      "@env/*":      ["src/environments/*"]
+    }
+  },
+  "files": [
+    "src/main.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}
